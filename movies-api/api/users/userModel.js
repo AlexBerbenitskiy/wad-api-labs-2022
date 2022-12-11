@@ -7,7 +7,6 @@ const Schema = mongoose.Schema;
   
   const UserSchema = new Schema({
     username: { type: String, unique: true, required: true},
-    //tried replacing 'passoword: {type:String} with type: "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
     password: {type: String, required: true },
     favourites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movies'}]
   });
