@@ -8,6 +8,9 @@ import React from "react";
   import AuthHeader from "./authHeader";
   import SignUpPage from "./signUpPage";
   import MovieProvider from "./moviesContext";
+  import {
+    getUpcomingMovies
+  } from '../tmdb-api';
 
   const App = () => {
     return (
@@ -43,5 +46,10 @@ import React from "react";
       </BrowserRouter>
     );
   };
+
+  router.get('/tmdb/upcoming', asyncHandler( async(req, res) => {
+    const upcomingMovies = await getUpcomingMovies();
+    res.status(200).json(upcomingMovies);
+  }));
 
   ReactDOM.render(<App />, document.getElementById("root"));
